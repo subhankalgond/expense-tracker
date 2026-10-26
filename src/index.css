@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-page: #F6F4EF;
+    --text-primary: #121826;
+    --border-color: #E2DDD5;
+  }
+
+  .dark {
+    --bg-page: #0E1217;
+    --text-primary: #EDECE6;
+    --border-color: #242A35;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: 'Newsreader', Georgia, Cambria, 'Times New Roman', serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Numeric figures always monospaced and tabular for accounting perfection */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Modern Editorial Financial Design System */
+@layer components {
+  /* Lightly rounded cards with refined border and subtle shadow */
+  .editorial-card,
+  .brutal-card {
+    @apply bg-[#FCFAF6] dark:bg-[#151921] border border-[#E6E1D8] dark:border-[#262C38] rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all;
+  }
+
+  .editorial-card-hover,
+  .brutal-card-hover {
+    @apply bg-[#FCFAF6] dark:bg-[#151921] border border-[#E6E1D8] dark:border-[#262C38] rounded-xl shadow-[0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)] hover:border-[#1E40AF]/40 dark:hover:border-blue-500/40 transition-all;
+  }
+
+  /* Primary, secondary and accent buttons */
+  .brutal-btn-primary {
+    @apply inline-flex items-center justify-center font-sans font-semibold text-xs px-3.5 py-2 bg-[#1E40AF] text-white rounded-lg shadow-sm hover:bg-[#1D3694] active:scale-[0.99] transition-all disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .brutal-btn-secondary {
+    @apply inline-flex items-center justify-center font-sans font-semibold text-xs px-3.5 py-2 bg-white dark:bg-[#1A1F29] text-[#121826] dark:text-zinc-200 border border-[#DDD7CE] dark:border-[#2D3442] rounded-lg shadow-sm hover:bg-[#F2EFE8] dark:hover:bg-[#222936] active:scale-[0.99] transition-all disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .brutal-btn-danger {
+    @apply inline-flex items-center justify-center font-sans font-semibold text-xs px-3.5 py-2 bg-[#B91C1C] text-white rounded-lg shadow-sm hover:bg-[#991B1B] active:scale-[0.99] transition-all disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Inputs and controls */
+  .brutal-input {
+    @apply w-full bg-white dark:bg-[#171C26] border border-[#DCD6CC] dark:border-[#2B3240] rounded-lg px-3 py-2 text-sm text-[#121826] dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-[#1E40AF]/20 focus:border-[#1E40AF] transition-all;
+  }
+
+  .brutal-label {
+    @apply block text-[11px] font-sans font-medium text-zinc-600 dark:text-zinc-400 mb-1.5;
+  }
+
+  /* Tables */
+  .brutal-table {
+    @apply w-full border-collapse text-left;
+  }
+
+  .brutal-th {
+    @apply bg-[#F4F1EA] dark:bg-[#171B24] border-b border-[#E2DDD5] dark:border-[#242A35] px-4 py-3 text-[11px] font-sans font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400;
+  }
+
+  .brutal-td {
+    @apply border-b border-[#EFECE5] dark:border-[#1E232E] px-4 py-3 text-sm font-sans text-zinc-800 dark:text-zinc-200;
+  }
+
+  /* Badges */
+  .brutal-badge {
+    @apply inline-flex items-center px-2 py-0.5 text-[11px] font-mono font-medium rounded-md border border-zinc-200 dark:border-zinc-700;
+  }
+
+  .editorial-masthead {
+    @apply border-b border-t border-[#E2DDD5] dark:border-[#242A35] py-2 my-3 flex items-center justify-between text-[11px] font-mono font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400;
+  }
+
+  .editorial-headline {
+    @apply font-serif font-bold tracking-tight text-[#121826] dark:text-zinc-100;
+  }
+
+  .editorial-kicker {
+    @apply font-mono text-[10px] font-bold uppercase tracking-widest text-[#1E40AF] dark:text-blue-400 block mb-0.5;
+  }
+
+  .editorial-section-rule {
+    @apply border-t border-[#E2DDD5] dark:border-[#242A35] my-6;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4EFE6;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #181A1F;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #121214;
+  border: 1px solid #FAF8F5;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #52545D;
+  border: 1px solid #181A1F;
+}

@@ -1,0 +1,5 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Link } from 'react-router-dom';
+export const NotFoundPage = () => {
+    return (_jsx("div", { className: "min-h-screen bg-cream-100 dark:bg-brutal-darkBg flex flex-col items-center justify-center p-6 text-center", children: _jsxs("div", { className: "brutal-card p-8 max-w-md w-full bg-cream-50 dark:bg-brutal-darkCard shadow-brutal-xl", children: [_jsx("div", { className: "w-16 h-16 bg-brutal-red text-white flex items-center justify-center font-mono font-black text-2xl border-3 border-ink-950 mx-auto mb-4", children: "404" }), _jsx("h1", { className: "text-xl font-black font-mono uppercase tracking-tight text-ink-950 dark:text-zinc-100 mb-2", children: "Page Not In Ledger" }), _jsx("p", { className: "text-xs font-mono text-ink-600 dark:text-zinc-400 mb-6 leading-relaxed", children: "The requested audit route does not exist in Ledger Brutalist or has been decommissioned." }), _jsx(Link, { to: "/dashboard", className: "w-full brutal-btn-primary py-3 block text-center", children: "Return to Dashboard" })] }) }));
+};

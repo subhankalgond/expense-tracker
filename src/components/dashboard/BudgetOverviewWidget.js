@@ -1,0 +1,22 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Link } from 'react-router-dom';
+import { formatINR } from '../../lib/currency';
+import { AlertTriangleIcon, ArrowRightIcon, PieChartIcon } from '../ui/Icons';
+export const BudgetOverviewWidget = ({ budgets }) => {
+    if (budgets.length === 0) {
+        return (_jsxs("div", { className: "bg-[#FCFAF6] dark:bg-[#171A21] p-5 rounded-xl border border-[#E6E1D8] dark:border-[#222733] shadow-xs", children: [_jsxs("div", { className: "flex items-center justify-between mb-3 border-b border-[#EFECE5] dark:border-[#222733] pb-2.5", children: [_jsxs("div", { className: "flex items-center gap-2", children: [_jsx(PieChartIcon, { className: "w-4 h-4 text-[#1E40AF] dark:text-blue-400" }), _jsx("h3", { className: "text-xs font-sans font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100", children: "Budget Usage" })] }), _jsxs(Link, { to: "/budgets", className: "text-xs font-sans text-[#1E40AF] dark:text-blue-400 font-semibold hover:underline flex items-center gap-1", children: ["Create ", _jsx(ArrowRightIcon, { className: "w-3 h-3" })] })] }), _jsx("p", { className: "text-xs font-sans text-zinc-500 dark:text-zinc-400 py-6 text-center", children: "No monthly category budgets configured yet." })] }));
+    }
+    return (_jsxs("div", { className: "bg-[#FCFAF6] dark:bg-[#171A21] p-5 rounded-xl border border-[#E6E1D8] dark:border-[#222733] shadow-xs", children: [_jsxs("div", { className: "flex items-center justify-between mb-4 border-b border-[#EFECE5] dark:border-[#222733] pb-2.5", children: [_jsxs("div", { className: "flex items-center gap-2", children: [_jsx(PieChartIcon, { className: "w-4 h-4 text-[#1E40AF] dark:text-blue-400" }), _jsx("h3", { className: "text-xs font-sans font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100", children: "Budget Usage" })] }), _jsxs(Link, { to: "/budgets", className: "text-xs font-sans text-[#1E40AF] dark:text-blue-400 font-semibold hover:underline flex items-center gap-1", children: ["View All ", _jsx(ArrowRightIcon, { className: "w-3 h-3" })] })] }), _jsx("div", { className: "space-y-4", children: budgets.slice(0, 4).map((b) => {
+                    const spent = b.spent_amount || 0;
+                    const limit = b.limit_amount;
+                    const pct = Math.min(Math.round((spent / limit) * 100), 100);
+                    const rawPct = Math.round((spent / limit) * 100);
+                    const isOver = spent > limit;
+                    const isWarning = rawPct >= 80 && !isOver;
+                    return (_jsxs("div", { className: "space-y-2", children: [_jsxs("div", { className: "flex items-center justify-between text-xs font-sans", children: [_jsx("span", { className: "font-semibold text-zinc-900 dark:text-zinc-100 truncate max-w-[170px]", children: b.name }), _jsxs("span", { className: "font-semibold tabular-nums text-zinc-800 dark:text-zinc-200", children: [formatINR(spent, { showDecimals: false }), ' ', _jsxs("span", { className: "text-zinc-400 font-normal", children: ["/ ", formatINR(limit, { showDecimals: false })] })] })] }), _jsx("div", { className: "w-full h-2 rounded-full bg-[#EAE5DC] dark:bg-zinc-800 overflow-hidden", children: _jsx("div", { className: `h-full rounded-full transition-all duration-300 ${isOver
+                                        ? 'bg-[#DC2626]'
+                                        : isWarning
+                                            ? 'bg-amber-500'
+                                            : 'bg-[#1E40AF] dark:bg-blue-500'}`, style: { width: `${pct}%` } }) }), _jsxs("div", { className: "flex items-center justify-between text-[11px] font-sans", children: [_jsxs("span", { className: "text-zinc-500 dark:text-zinc-400 font-medium", children: [rawPct, "% used"] }), isOver ? (_jsxs("span", { className: "text-[#DC2626] font-semibold flex items-center gap-1 text-[10px] px-1.5 py-0.2 rounded bg-red-50 dark:bg-red-950/40", children: [_jsx(AlertTriangleIcon, { className: "w-2.5 h-2.5" }), " Over by ", formatINR(spent - limit, { showDecimals: false })] })) : isWarning ? (_jsxs("span", { className: "text-amber-700 dark:text-amber-400 font-medium text-[10px] px-1.5 py-0.2 rounded bg-amber-50 dark:bg-amber-950/40", children: [formatINR(limit - spent, { showDecimals: false }), " remaining"] })) : (_jsxs("span", { className: "text-zinc-500 dark:text-zinc-400", children: [formatINR(limit - spent, { showDecimals: false }), " remaining"] }))] })] }, b.id));
+                }) })] }));
+};

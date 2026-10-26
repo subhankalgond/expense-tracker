@@ -1,0 +1,6 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { Modal } from './Modal';
+import { AlertTriangleIcon } from './Icons';
+export const ConfirmDialog = ({ isOpen, onClose, onConfirm, title, message, confirmLabel = 'Confirm Action', cancelLabel = 'Cancel', isDestructive = true, isLoading = false, }) => {
+    return (_jsx(Modal, { isOpen: isOpen, onClose: onClose, title: title, maxWidth: "sm", children: _jsxs("div", { className: "space-y-4", children: [_jsxs("div", { className: "flex items-start gap-3", children: [_jsx("div", { className: "p-2 border-2 border-ink-950 dark:border-zinc-500 bg-amber-100 dark:bg-amber-950/50 text-amber-800 dark:text-amber-400", children: _jsx(AlertTriangleIcon, { className: "w-5 h-5" }) }), _jsx("p", { className: "text-sm text-ink-700 dark:text-zinc-300 font-medium leading-relaxed", children: message })] }), _jsxs("div", { className: "flex items-center justify-end gap-3 pt-4 border-t border-ink-200 dark:border-zinc-700", children: [_jsx("button", { type: "button", onClick: onClose, disabled: isLoading, className: "brutal-btn-secondary", children: cancelLabel }), _jsx("button", { type: "button", onClick: onConfirm, disabled: isLoading, className: isDestructive ? 'brutal-btn-danger' : 'brutal-btn-primary', children: isLoading ? 'Processing...' : confirmLabel })] })] }) }));
+};
